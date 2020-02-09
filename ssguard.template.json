@@ -1,0 +1,12 @@
+{
+  "host": "192.168.31.1",
+  "port": 7180,
+  "db_host": "dbhost",
+  "db_port": 3306,
+  "db_db": "db_name",
+  "db_user": "user",
+  "db_password": "passwd",
+  "ss_config_path": "/etc/shadowsocks.json",
+  "location": "US-NewYork",
+  "domain": "hahaha"
+}
