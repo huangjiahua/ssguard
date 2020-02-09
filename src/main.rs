@@ -41,6 +41,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut err_cnt = 0;
 
     let mut saved_ports = vec![];
+    let mut last = std::time::Instant::now();
 
     loop {
         let ports = match monitor_ss(&config).await {
@@ -57,7 +58,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 continue;
             }
         };
-        if ports == saved_ports {
+        let curr = std::time::Instant::now();
+        if ports == saved_ports && (curr - last).as_secs() > 3600 {
+            last = curr;
             continue;
         }
         let mut wait_secs = 4;
